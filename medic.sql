@@ -26,16 +26,14 @@ create table medico (
 	direccion varchar(500),
 	sexo char(1),
 	foto varchar(1000),
-	fechaNaci date not null,
-	email varchar(500) not null,
-	password varchar(100) not null
-
+	fechaNaci date,
 );
 
 create table especialidad (
 	cod_esp varchar(10) primary key,
 	nombre varchar(100) not null,
-	descripcion varchar(1000)
+	descripcion varchar(1000),
+	image varchar(500) not null
 );
 
 create table especialidad_medico (
