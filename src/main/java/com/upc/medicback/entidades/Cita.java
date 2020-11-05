@@ -13,8 +13,13 @@ import java.time.LocalTime;
 @Entity
 public class Cita implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String cod_cit;
+    @NotNull
+    private String cod_pac;
+    @NotNull
+    private String cod_mir;
+    @NotNull
+    private String cod_sal;
     @NotNull
     private char estado;
     @Column
@@ -54,5 +59,29 @@ public class Cita implements Serializable {
 
     public void setHora(String hora) {
         this.hora = hora;
+    }
+
+    public String getCod_pac() {
+        return cod_pac;
+    }
+
+    public void setCod_pac(String cod_pac) {
+        this.cod_pac = cod_pac;
+    }
+
+    public String getCod_mir() {
+        return cod_mir;
+    }
+
+    public void setCod_mir(String cod_mir) {
+        this.cod_mir = cod_mir;
+    }
+
+    public String getCod_sal() {
+        return cod_sal;
+    }
+
+    public void setCod_sal(String cod_sal) {
+        this.cod_sal = cod_sal;
     }
 }
