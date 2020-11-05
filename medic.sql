@@ -4,13 +4,13 @@ create table paciente (
 	cod_pac varchar(10) primary key,
 	nombres varchar(200) not null,
 	apellidos varchar(200) not null,
-	tipoDoc char(1) not null,
-	numDoc varchar(200) not null,
+	tipo_doc char(1) not null,
+	num_doc varchar(200) not null,
 	ubigeo int,
 	direccion varchar(500),
 	sexo char(1),
 	foto varchar(1000),
-	fechaNaci date not null,
+	fecha_naci date not null,
 	email varchar(500) not null,
 	password varchar(100) not null
 );
@@ -19,14 +19,14 @@ create table medico (
 	cod_med varchar(10) primary key,
 	nombres varchar(200) not null,
 	apellidos varchar(200) not null,
-	tipoDoc char(1) not null,
-	numDoc varchar(200) not null,
+	tipo_doc char(1) not null,
+	num_doc varchar(200) not null,
 	estado char(1) not null,
 	ubigeo int,
 	direccion varchar(500),
 	sexo char(1),
 	foto varchar(1000),
-	fechaNaci date,
+	fecha_naci date
 );
 
 create table especialidad (
@@ -54,14 +54,14 @@ create table sala(
 create table cita (
 	cod_cit varchar(10) primary key,
 	cod_pac varchar(10) not null,
-	cod_med varchar(10) not null,
+	cod_mir varchar(10) not null,
 	cod_sal varchar(10) not null,
 	estado char(1) not null,
 	fecha date not null,
 	hora time not null,
 	
 	foreign key (cod_pac) references paciente(cod_pac),
-	foreign key (cod_med) references medico(cod_med),
+	foreign key (cod_mir) references especialidad_medico(cod_mir),
 	foreign key (cod_sal) references sala(cod_sal)
 );
 

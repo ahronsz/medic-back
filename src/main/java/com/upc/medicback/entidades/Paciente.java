@@ -1,13 +1,11 @@
 package com.upc.medicback.entidades;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Paciente implements Serializable {
@@ -26,12 +24,17 @@ public class Paciente implements Serializable {
     private String direccion;
     private char sexo;
     private String foto;
+    @Column
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern="dd/MM/yyyy", timezone = "GMT-5")
     @NotNull
-    private LocalDate fechaNaci;
+    private Date fechaNaci;
     @NotNull
     private String email;
     @NotNull
     private String password;
+    @Transient
+    private int edad;
 
     public String getCod_pac() {
         return cod_pac;
@@ -105,11 +108,11 @@ public class Paciente implements Serializable {
         this.foto = foto;
     }
 
-    public LocalDate getFechaNaci() {
+    public Date getFechaNaci() {
         return fechaNaci;
     }
 
-    public void setFechaNaci(LocalDate fechaNaci) {
+    public void setFechaNaci(Date fechaNaci) {
         this.fechaNaci = fechaNaci;
     }
 
@@ -127,5 +130,13 @@ public class Paciente implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 }

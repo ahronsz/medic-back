@@ -1,15 +1,14 @@
 package com.upc.medicback.entidades;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
-import org.apache.tomcat.jni.Local;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 public class Cita implements Serializable {
@@ -18,10 +17,12 @@ public class Cita implements Serializable {
     private String cod_cit;
     @NotNull
     private char estado;
+    @Column
+    @JsonFormat(pattern="dd/MM/yyyy", timezone = "GMT-5")
     @NotNull
     private LocalDate fecha;
     @NotNull
-    private LocalDateTime hora;
+    private String hora;
 
     public String getCod_cit() {
         return cod_cit;
@@ -47,11 +48,11 @@ public class Cita implements Serializable {
         this.fecha = fecha;
     }
 
-    public LocalDateTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(LocalDateTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 }

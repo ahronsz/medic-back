@@ -12,6 +12,7 @@ public class Especialidad implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String cod_esp;
     private String nombre;
+    private String image;
     private String descripcion;
 
     public String getCod_esp() {
@@ -36,5 +37,13 @@ public class Especialidad implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
