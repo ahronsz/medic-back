@@ -72,14 +72,11 @@ INSERT INTO paciente VALUES
 ( 'pac_1', 'Ahron Genaro', 'Sotomayor Zegarra', '1', '76771058', '140101', 'Av. Canada 1324', 'M', '', '1996-07-03', 'ahronsz32@gmail.com', 'password');
 
 INSERT INTO cita VALUES
-("cit_1", "pac_1", "med_1", "sal_4", "esp_3", "0", "2020-12-04", "15:00"),
-("cit_2", "pac_1", "med_1", "sal_4", "esp_8", "0", "2020-12-04", "18:00");
+("cit_1", "pac_1", "mir_1", "sal_4","0", "2020-12-04", "15:00"),
+("cit_2", "pac_1", "mir_1", "sal_5", "0", "2020-12-04", "18:00"),
+("cit_3", "pac_1", "mir_1", "sal_5", "0", "2020-12-04", "10:00"),
+("cit_4", "pac_1", "mir_2", "sal_1","0", "2020-12-05", "15:00"),
+("cit_5", "pac_1", "mir_3", "sal_2", "0", "2020-12-06", "18:00"),
+("cit_6", "pac_1", "mir_4", "sal_3", "0", "2020-12-07", "10:00"),
+("cit_7", "pac_1", "mir_1", "sal_4","0", "2020-12-05", "15:00"),
 /* las citas son de 09:00 hasta las 18:00*/
- select c.* from cita c inner join especialidad_medico em on em.cod_med = c.cod_med where em.cod_esp = 'esp_3' and;
-
-
-
-/*SELECT TIME_FORMAT(hora, "%h:%i %p") from sala;*/
-/*SELECT * FROM medico where cod_med = med_1 inner join especialidad_medico on medico.cod_med = especialidad_medico.cod_med;*/
-/* select medico.* from medico inner join especialidad_medico on especialidad_medico.cod_med = medico.cod_med where especialidad_medico.cod_esp = 'esp_3';*/
-select m.* from medico m inner join especialidad_medico em on em.cod_med = m.cod_med where em.cod_esp = 'esp_3';
