@@ -2,7 +2,6 @@ package com.upc.medicback.rest;
 
 import com.upc.medicback.entidades.Especialidad;
 import com.upc.medicback.services.ServicioEspecialidadCore;
-import com.upc.medicback.services.ServicioMedicoCore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

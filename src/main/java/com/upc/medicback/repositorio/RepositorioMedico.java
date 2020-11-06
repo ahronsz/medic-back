@@ -1,6 +1,5 @@
 package com.upc.medicback.repositorio;
 
-import com.upc.medicback.entidades.Especialidad;
 import com.upc.medicback.entidades.Medico;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

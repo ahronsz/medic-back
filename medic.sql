@@ -65,5 +65,16 @@ create table cita (
 	foreign key (cod_sal) references sala(cod_sal)
 );
 
+delimiter //
+	CREATE PROCEDURE get_code_cit ()
+		BEGIN
+			set @last_cit := (SELECT cod_cit FROM cita ORDER BY CONVERT(SUBSTRING_INDEX(cod_cit, "_", -1), UNSIGNED) DESC LIMIT 1);
+			set @last_cit_only_number := (SELECT SUBSTRING_INDEX(@last_cit, "_", -1));
+			SELECT CONCAT('cit_', @last_cit_only_number + 1) AS 'cod_cit';
+			set @last_cit = null;
+			set @last_cit_only_number = null;
+       END//   
+delimiter ;
+
 
 

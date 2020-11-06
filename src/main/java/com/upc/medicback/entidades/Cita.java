@@ -5,10 +5,7 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
 public class Cita implements Serializable {
