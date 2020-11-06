@@ -2,10 +2,13 @@ package com.upc.medicback.services;
 
 import com.upc.medicback.entidades.Cita;
 import com.upc.medicback.entidades.EspecialidadMedico;
+import com.upc.medicback.entidades.EspecialidadMedico.Hora;
 import com.upc.medicback.repositorio.RepositorioCita;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,7 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
     @Override
     public Cita registrarCita(Cita cita) {
         cita.setCod_cit(repositorioCita.obtenerCodigo());
+        cita.setEstado('0');
         return repositorioCita.save(cita);
     }
 
@@ -39,19 +43,23 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
 
     @Override
     public EspecialidadMedico listarHorasDisponibleXDia(EspecialidadMedico especialidadMedico) {  //Muestra los horarios disponibles
-        List<Cita> citas = new ArrayList<Cita>();
-        if (especialidadMedico.getCod_med().equals("")) {
+        List<Cita> citas;
+        if (StringUtils.isBlank(especialidadMedico.getCod_med())) {
             citas = this.listarCitasXDiaEspecialidad(especialidadMedico);
+            especialidadMedico.setCod_med("");
         } else {
             citas = this.listarCitasXDia(especialidadMedico);
         }
-        especialidadMedico.getHoras().addAll(this.mostrarDiasDisponibles(citas));
+        especialidadMedico.setHora(this.mostrarHorasDisponibles(citas));
         return especialidadMedico;
     }
 
-    private List<String> mostrarDiasDisponibles (List<Cita> citas) {
+    private Hora mostrarHorasDisponibles (List<Cita> citas) {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm a");
+        Hora hora = new Hora();
         List<String> horas = new ArrayList<String>();
-        List<String> horasDisponible = new ArrayList<String>();
+        List<String> horas_m = new ArrayList<String>();
+
         horas.add("09:00");
         horas.add("10:00");
         horas.add("11:00");
@@ -64,9 +72,10 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         horas.add("18:00");
 
         for (Cita c: citas) horas.remove(c.getHora());
-        horasDisponible.addAll(horas);
-        return horasDisponible;
+        horas.forEach( (h) -> horas_m.add(format.format(LocalTime.parse(h))));
+
+        hora.setHoras(horas);
+        hora.setHoras_m(horas_m);
+        return hora;
     }
-
-
 }

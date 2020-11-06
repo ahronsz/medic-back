@@ -2,15 +2,16 @@ package com.upc.medicback.entidades;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Data
 public class Paciente implements Serializable {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private String cod_pac;
     @NotNull
     private String nombres;
@@ -35,108 +36,4 @@ public class Paciente implements Serializable {
     private String password;
     @Transient
     private int edad;
-
-    public String getCod_pac() {
-        return cod_pac;
-    }
-
-    public void setCod_pac(String cod_pac) {
-        this.cod_pac = cod_pac;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public char getTipoDoc() {
-        return tipoDoc;
-    }
-
-    public void setTipoDoc(char tipoDoc) {
-        this.tipoDoc = tipoDoc;
-    }
-
-    public String getNumDoc() {
-        return numDoc;
-    }
-
-    public void setNumDoc(String numDoc) {
-        this.numDoc = numDoc;
-    }
-
-    public int getUbigeo() {
-        return ubigeo;
-    }
-
-    public void setUbigeo(int ubigeo) {
-        this.ubigeo = ubigeo;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public char getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-
-    public Date getFechaNaci() {
-        return fechaNaci;
-    }
-
-    public void setFechaNaci(Date fechaNaci) {
-        this.fechaNaci = fechaNaci;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
 }
