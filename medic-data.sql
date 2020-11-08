@@ -56,7 +56,7 @@ INSERT INTO sala VALUES
 
 INSERT INTO hora VALUES
 ('hor_1', '09:00', '12:00'),
-('hor_2', '15:00', '19:00');
+('hor_2', '15:00', '18:00');
 
 
 INSERT INTO especialidad_medico VALUES 

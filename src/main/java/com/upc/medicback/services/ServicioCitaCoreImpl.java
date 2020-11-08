@@ -90,10 +90,8 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         List<String> horas = new ArrayList<String>();
 
         for (int i = Integer.parseInt(hora_start); i <= Integer.parseInt(hora_end); i++) {
-            System.out.println(i);
             horas.add(format.format(LocalTime.of(i, 0)));
         }
-
         em.getHora().getHoras().retainAll(horas);
     }
 
