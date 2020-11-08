@@ -1,6 +1,7 @@
 package com.upc.medicback.repositorio;
 
 import com.upc.medicback.entidades.Cita;
+import com.upc.medicback.entidades.EspecialidadMedico;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,15 @@ public interface RepositorioCita extends CrudRepository<Cita, String> {
     @Query(value = "SELECT c.* FROM cita c INNER JOIN especialidad_medico em ON em.cod_mir = c.cod_mir WHERE DATE_FORMAT(fecha, \"%d/%m/%Y\") = :fecha AND em.cod_esp = :cod_esp", nativeQuery = true)
     public List<Cita> listarCitasXDiaEspecialidad(String cod_esp, String fecha);
 
+    @Query(value = "SELECT h.start_hora, h.end_hora FROM hora h INNER JOIN especialidad_medico em ON em.cod_hor = h.cod_hor WHERE em.cod_mir = :cod_mir", nativeQuery = true)
+    public EspecialidadMedico.Hora obtenerHoraXMIR(String cod_mir);
+
     @Query(value = "CALL get_code_cit", nativeQuery = true)
     public String obtenerCodigo();
+
+    @Query(value = "SELECT h.end_hora FROM hora h INNER JOIN especialidad_medico em ON em.cod_hor = h.cod_hor WHERE em.cod_mir = :cod_mir", nativeQuery = true)
+    public String obtenerHoraEndXMIR(String cod_mir);
+
+    @Query(value = "SELECT h.start_hora FROM hora h INNER JOIN especialidad_medico em ON em.cod_hor = h.cod_hor WHERE em.cod_mir = :cod_mir", nativeQuery = true)
+    public String obtenerHoraStartXMIR(String cod_mir);
 }

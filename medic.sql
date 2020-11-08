@@ -35,14 +35,22 @@ create table especialidad (
 	descripcion varchar(1000),
 	image varchar(500) not null
 );
+create table hora(
+	cod_hor varchar(10) primary key,
+	start_hora varchar(5) not null,
+	end_hora varchar(5) not null
+ );
 
 create table especialidad_medico (
 	cod_mir varchar(10) primary key,
 	cod_med varchar(10) not null,
 	cod_esp varchar(10) not null,
+	cod_hor varchar(10) not null,
+	estado char(1) not null,
 
 	foreign key (cod_med) references medico(cod_med),
-	foreign key (cod_esp) references especialidad(cod_esp)
+	foreign key (cod_esp) references especialidad(cod_esp),
+	foreign key (cod_hor) references hora(cod_hor)
 );
 
 create table sala(
@@ -58,7 +66,7 @@ create table cita (
 	cod_sal varchar(10) not null,
 	estado char(1) not null,
 	fecha date not null,
-	hora time not null,
+	hora varchar(5) not null,
 	
 	foreign key (cod_pac) references paciente(cod_pac),
 	foreign key (cod_mir) references especialidad_medico(cod_mir),

@@ -48,14 +48,17 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
             citas = this.listarCitasXDiaEspecialidad(especialidadMedico);
             especialidadMedico.setCod_med("");
         } else {
-            citas = this.listarCitasXDia(especialidadMedico);
+            citas = this.listarCitasXDia(especialidadMedico); // lista cita por mir
         }
         especialidadMedico.setHora(this.mostrarHorasDisponibles(citas));
+        if (!StringUtils.isBlank(especialidadMedico.getCod_med())) {
+            this.filtrarHorasXDisponibilidad(especialidadMedico);
+        }
+        this.agregarMeridiano(especialidadMedico);
         return especialidadMedico;
     }
 
     private Hora mostrarHorasDisponibles (List<Cita> citas) {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm a");
         Hora hora = new Hora();
         List<String> horas = new ArrayList<String>();
         List<String> horas_m = new ArrayList<String>();
@@ -72,10 +75,31 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         horas.add("18:00");
 
         for (Cita c: citas) horas.remove(c.getHora());
-        horas.forEach( (h) -> horas_m.add(format.format(LocalTime.parse(h))));
 
         hora.setHoras(horas);
-        hora.setHoras_m(horas_m);
         return hora;
+    }
+
+    private void filtrarHorasXDisponibilidad (EspecialidadMedico em) {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm");
+        String cod_mir = repositorioCita.buscarMedicoEspecialidad(em.getCod_med(), em.getCod_esp());
+        String hora_start = (repositorioCita.obtenerHoraStartXMIR(cod_mir).split(":"))[0];
+        String hora_end = (repositorioCita.obtenerHoraEndXMIR(cod_mir).split(":"))[0];
+
+        List<String> horas = new ArrayList<String>();
+
+        for (int i = Integer.parseInt(hora_start); i <= Integer.parseInt(hora_end); i++) {
+            horas.add(format.format(LocalTime.of(i,0)));
+        }
+        em.getHora().getHoras().retainAll(horas);
+    }
+
+    private void agregarMeridiano (EspecialidadMedico em) {
+        DateTimeFormatter format_m = DateTimeFormatter.ofPattern("hh:mm a");
+        List<String> hora_m = new ArrayList<String>();
+        em.getHora().getHoras().forEach( (h) -> {
+            hora_m.add(format_m.format(LocalTime.parse(h)));
+        });
+        em.getHora().setHoras_m(hora_m);
     }
 }

@@ -54,29 +54,33 @@ INSERT INTO sala VALUES
 ( 'sal_25', '5', '5'),
 ( 'sal_26', '5', '6');
 
+INSERT INTO hora VALUES
+('hor_1', '09:00', '12:00'),
+('hor_2', '15:00', '19:00');
+
+
 INSERT INTO especialidad_medico VALUES 
-( 'mir_1', 'med_1', 'esp_3'),
-( 'mir_2', 'med_2', 'esp_3'),
-( 'mir_3', 'med_3', 'esp_3'),
-( 'mir_4', 'med_4', 'esp_3'),
-( 'mir_5', 'med_5', 'esp_4'),
-( 'mir_6', 'med_6', 'esp_4'),
-( 'mir_7', 'med_7', 'esp_4'),
-( 'mir_8', 'med_8', 'esp_4'),
-( 'mir_9', 'med_1', 'esp_8'),
-( 'mir_10', 'med_2', 'esp_8'),
-( 'mir_11', 'med_7', 'esp_8'),
-( 'mir_12', 'med_8', 'esp_8');
+( 'mir_1', 'med_1', 'esp_2', 'hor_1', '0'),
+( 'mir_2', 'med_2', 'esp_2', 'hor_2', '0'),
+( 'mir_3', 'med_3', 'esp_2', 'hor_1', '0'),
+( 'mir_4', 'med_4', 'esp_2', 'hor_2', '0'),
+( 'mir_5', 'med_5', 'esp_8', 'hor_1', '0'),
+( 'mir_6', 'med_6', 'esp_8', 'hor_2', '0'),
+( 'mir_7', 'med_7', 'esp_8', 'hor_1', '0'),
+( 'mir_8', 'med_8', 'esp_8', 'hor_2', '0'),
+( 'mir_9', 'med_1', 'esp_9', 'hor_2', '0'),
+( 'mir_10', 'med_2', 'esp_9', 'hor_1', '0'),
+( 'mir_11', 'med_7', 'esp_9', 'hor_2', '0'),
+( 'mir_12', 'med_8', 'esp_9', 'hor_1', '0');
 
 INSERT INTO paciente VALUES
 ( 'pac_1', 'Ahron Genaro', 'Sotomayor Zegarra', '1', '76771058', '140101', 'Av. Canada 1324', 'M', '', '1996-07-03', 'ahronsz32@gmail.com', 'password');
 
 INSERT INTO cita VALUES
-("cit_1", "pac_1", "mir_1", "sal_4","0", "2020-12-04", "15:00"),
-("cit_2", "pac_1", "mir_5", "sal_6", "0", "2020-12-04", "18:00"),
-("cit_3", "pac_1", "mir_9", "sal_5", "0", "2020-12-04", "10:00"),
+("cit_1", "pac_1", "mir_1", "sal_4","0", "2020-12-04", "10:00"),
+("cit_2", "pac_1", "mir_5", "sal_6", "0", "2020-12-04", "09:00"),
+("cit_3", "pac_1", "mir_9", "sal_5", "0", "2020-12-04", "15:00"),
 ("cit_4", "pac_1", "mir_2", "sal_1","0", "2020-12-05", "15:00"),
 ("cit_5", "pac_1", "mir_6", "sal_2", "0", "2020-12-06", "18:00"),
 ("cit_6", "pac_1", "mir_10", "sal_3", "0", "2020-12-07", "10:00"),
-("cit_7", "pac_1", "mir_3", "sal_4","0", "2020-12-05", "15:00");
-/* las citas son de 09:00 hasta las 18:00*/
+("cit_7", "pac_1", "mir_3", "sal_4","0", "2020-12-05", "09:00");
