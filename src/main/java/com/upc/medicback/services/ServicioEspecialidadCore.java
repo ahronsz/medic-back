@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ServicioEspecialidadCore {
     public List<Especialidad> listarEspecialidades();
+
     public List<Especialidad> listarEspecialidadesXMedico();
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ServicioMedicoCoreImpl implements ServicioMedicoCore{
+public class ServicioMedicoCoreImpl implements ServicioMedicoCore {
 
     @Autowired
     private Utilitario utilitario;
@@ -20,7 +20,7 @@ public class ServicioMedicoCoreImpl implements ServicioMedicoCore{
     @Override
     public List<Medico> listarMedicos() {
         List<Medico> medicos = (List<Medico>) repositorioMedico.findAll();
-        for (Medico m: medicos) {
+        for (Medico m : medicos) {
             m.setEdad(utilitario.obtenerEdad(m.getFechaNaci()));
         }
         return medicos;
@@ -29,7 +29,7 @@ public class ServicioMedicoCoreImpl implements ServicioMedicoCore{
     @Override
     public List<Medico> listarMedicosXEspecialidad(String cod_esp) {
         List<Medico> medicos = repositorioMedico.listarMedicoXEspecialidad(cod_esp);
-        for (Medico m: medicos) {
+        for (Medico m : medicos) {
             m.setEdad(utilitario.obtenerEdad(m.getFechaNaci()));
         }
         return medicos;

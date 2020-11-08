@@ -22,7 +22,7 @@ public class CitaCoreRestImpl implements CitaCoreRest {
         List<Cita> c = null;
         try {
             c = servicioCitaCore.listarCitasXDia(especialidadMedico);
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puedo buscar, revise su request");
         }
         return c;
@@ -33,7 +33,7 @@ public class CitaCoreRestImpl implements CitaCoreRest {
         List<Cita> c = null;
         try {
             c = servicioCitaCore.listarCitasXDiaEspecialidad(especialidadMedico);
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puedo buscar, revise su request");
         }
         return c;
@@ -44,7 +44,7 @@ public class CitaCoreRestImpl implements CitaCoreRest {
         EspecialidadMedico em = null;
         try {
             em = servicioCitaCore.listarHorasDisponibleXDia(especialidadMedico);
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puedo buscar, revise su request");
         }
         return em;

@@ -14,7 +14,7 @@ public class EspecialidadMedico implements Serializable {
     private String cod_med;
     private String cod_esp;
     @Column
-    @JsonFormat(pattern="dd/MM/yyyy", timezone = "GMT-5")
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-5")
     @NotNull
     private LocalDate fecha;
     private Hora hora;

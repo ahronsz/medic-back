@@ -22,7 +22,7 @@ public class EspecialidadCoreRestImpl implements EspecialidadCoreRest {
         List<Especialidad> esp = null;
         try {
             esp = servicioEspecialidadCore.listarEspecialidades();
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puedo buscar, revise su request");
         }
         return esp;

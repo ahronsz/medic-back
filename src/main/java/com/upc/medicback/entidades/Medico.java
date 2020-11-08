@@ -30,7 +30,7 @@ public class Medico implements Serializable {
     private String foto;
     @Column
     @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern="dd/MM/yyyy", timezone = "GMT-5")
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-5")
     @NotNull
     private Date fechaNaci;
     @Transient

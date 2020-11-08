@@ -24,18 +24,18 @@ public class MedicoCoreRestImpl implements MedicoCoreRest {
         List<Medico> m = null;
         try {
             m = servicioMedicoCore.listarMedicos();
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puedo buscar, revise su request");
         }
         return m;
     }
 
     @GetMapping("/especialidad/{cod_esp}")
-    public List<Medico> listarMedicosXEspecialidad (@PathVariable("cod_esp") String cod_esp) {
+    public List<Medico> listarMedicosXEspecialidad(@PathVariable("cod_esp") String cod_esp) {
         List<Medico> m = null;
         try {
             m = servicioMedicoCore.listarMedicosXEspecialidad(cod_esp);
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puedo buscar, revise su request");
         }
         return m;

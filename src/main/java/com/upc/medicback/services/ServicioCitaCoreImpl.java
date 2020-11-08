@@ -58,7 +58,7 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         return especialidadMedico;
     }
 
-    private Hora mostrarHorasDisponibles (List<Cita> citas) {
+    private Hora mostrarHorasDisponibles(List<Cita> citas) {
         Hora hora = new Hora();
         List<String> horas = new ArrayList<String>();
         List<String> horas_m = new ArrayList<String>();
@@ -74,13 +74,13 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         horas.add("17:00");
         horas.add("18:00");
 
-        for (Cita c: citas) horas.remove(c.getHora());
+        for (Cita c : citas) horas.remove(c.getHora());
 
         hora.setHoras(horas);
         return hora;
     }
 
-    private void filtrarHorasXDisponibilidad (EspecialidadMedico em) {
+    private void filtrarHorasXDisponibilidad(EspecialidadMedico em) {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm");
         String cod_mir = repositorioCita.buscarMedicoEspecialidad(em.getCod_med(), em.getCod_esp());
         String hora_start = (repositorioCita.obtenerHoraStartXMIR(cod_mir).split(":"))[0];
@@ -89,15 +89,15 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         List<String> horas = new ArrayList<String>();
 
         for (int i = Integer.parseInt(hora_start); i <= Integer.parseInt(hora_end); i++) {
-            horas.add(format.format(LocalTime.of(i,0)));
+            horas.add(format.format(LocalTime.of(i, 0)));
         }
         em.getHora().getHoras().retainAll(horas);
     }
 
-    private void agregarMeridiano (EspecialidadMedico em) {
+    private void agregarMeridiano(EspecialidadMedico em) {
         DateTimeFormatter format_m = DateTimeFormatter.ofPattern("hh:mm a");
         List<String> hora_m = new ArrayList<String>();
-        em.getHora().getHoras().forEach( (h) -> {
+        em.getHora().getHoras().forEach((h) -> {
             hora_m.add(format_m.format(LocalTime.parse(h)));
         });
         em.getHora().setHoras_m(hora_m);
