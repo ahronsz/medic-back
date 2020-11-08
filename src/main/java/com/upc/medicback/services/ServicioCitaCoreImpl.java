@@ -52,6 +52,7 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         }
         especialidadMedico.setHora(this.mostrarHorasDisponibles(citas));
         if (!StringUtils.isBlank(especialidadMedico.getCod_med())) {
+            System.out.println("entra a filtrar");
             this.filtrarHorasXDisponibilidad(especialidadMedico);
         }
         this.agregarMeridiano(especialidadMedico);
@@ -81,7 +82,7 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
     }
 
     private void filtrarHorasXDisponibilidad(EspecialidadMedico em) {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("H:mm");
         String cod_mir = repositorioCita.buscarMedicoEspecialidad(em.getCod_med(), em.getCod_esp());
         String hora_start = (repositorioCita.obtenerHoraStartXMIR(cod_mir).split(":"))[0];
         String hora_end = (repositorioCita.obtenerHoraEndXMIR(cod_mir).split(":"))[0];
@@ -89,8 +90,10 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         List<String> horas = new ArrayList<String>();
 
         for (int i = Integer.parseInt(hora_start); i <= Integer.parseInt(hora_end); i++) {
+            System.out.println(i);
             horas.add(format.format(LocalTime.of(i, 0)));
         }
+
         em.getHora().getHoras().retainAll(horas);
     }
 
