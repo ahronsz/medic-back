@@ -24,10 +24,4 @@ public class EspecialidadMedico implements Serializable {
         private List<String> horas;
         private List<String> horas_m;
     }
-
-    @Data
-    public static class HoraLaboral {
-        private String start_hora;
-        private String end_hora;
-    }
 }

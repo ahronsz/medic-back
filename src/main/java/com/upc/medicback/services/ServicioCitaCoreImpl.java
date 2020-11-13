@@ -52,24 +52,20 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         }
         especialidadMedico.setHora(this.mostrarHorasDisponibles(citas));
         if (!StringUtils.isBlank(especialidadMedico.getCod_med())) {
-            System.out.println("entra a filtrar");
             this.filtrarHorasXDisponibilidad(especialidadMedico);
         }
         this.agregarMeridiano(especialidadMedico);
         return especialidadMedico;
     }
 
-    private Hora mostrarHorasDisponibles(List<Cita> citas) {
+    private Hora mostrarHorasDisponibles(List<Cita> citas) { // pendiente listar horarios con horas disponibles de medico
         Hora hora = new Hora();
         List<String> horas = new ArrayList<String>();
-        List<String> horas_m = new ArrayList<String>();
 
         horas.add("09:00");
         horas.add("10:00");
         horas.add("11:00");
         horas.add("12:00");
-        horas.add("13:00");
-        horas.add("14:00");
         horas.add("15:00");
         horas.add("16:00");
         horas.add("17:00");
@@ -84,19 +80,15 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
     private void filtrarHorasXDisponibilidad(EspecialidadMedico em) {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
         String cod_mir = repositorioCita.buscarMedicoEspecialidad(em.getCod_med(), em.getCod_esp());
-        String hora_start = (repositorioCita.obtenerHoraStartXMIR(cod_mir).split(":"))[0];
-        String hora_end = (repositorioCita.obtenerHoraEndXMIR(cod_mir).split(":"))[0];
+        int hora_start = Integer.parseInt((repositorioCita.obtenerHoraStartXMIR(cod_mir).split(":"))[0]);
+        int hora_end = Integer.parseInt((repositorioCita.obtenerHoraEndXMIR(cod_mir).split(":"))[0]);
 
         List<String> horas = new ArrayList<String>();
 
-        for (int i = Integer.parseInt(hora_start); i <= Integer.parseInt(hora_end); i++) {
+        for (int i = hora_start; i <= hora_end; i++) {
             horas.add(format.format(LocalTime.of(i, 0)));
         }
-        System.out.println(horas);
-        System.out.println(em.getHora().getHoras());
         em.getHora().getHoras().retainAll(horas);
-        System.out.println(horas);
-        System.out.println(em.getHora().getHoras());
     }
 
     private void agregarMeridiano(EspecialidadMedico em) {
