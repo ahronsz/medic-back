@@ -1,7 +1,8 @@
-package com.upc.medicback.rest;
+package com.upc.medicback.rest.impl;
 
 import com.upc.medicback.entidades.Cita;
 import com.upc.medicback.entidades.EspecialidadMedico;
+import com.upc.medicback.rest.CitaCoreRest;
 import com.upc.medicback.services.ServicioCitaCore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,17 @@ public class CitaCoreRestImpl implements CitaCoreRest {
 
     @Autowired
     private ServicioCitaCore servicioCitaCore;
+
+    @GetMapping("/all")
+    public List<Cita.Detail> obtenerCitas() {
+        List<Cita.Detail> c = null;
+        try {
+            c = servicioCitaCore.obtenerCitas();
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puedo listar las citas, revise su request");
+        }
+        return c;
+    }
 
     @GetMapping("/dia")
     public List<Cita> listarCitaXDia(@RequestBody EspecialidadMedico especialidadMedico) {
@@ -51,12 +63,23 @@ public class CitaCoreRestImpl implements CitaCoreRest {
     }
 
     @PostMapping("/save")
-    public Cita registrarCita(@RequestBody Cita cita) {
-        Cita c = null;
+    public Cita.Detail registrarCita(@RequestBody Cita cita) {
+        Cita.Detail c = null;
         try {
             c = servicioCitaCore.registrarCita(cita);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No se pudo crear, revise su request");
+        }
+        return c;
+    }
+
+    @GetMapping("/detalle")
+    public Cita.Detail detalleCita(@RequestBody Cita cita) {
+        Cita.Detail c = null;
+        try {
+            c = servicioCitaCore.obtenerDetalleCita(cita);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No se pudo detallar la cita, revise su request");
         }
         return c;
     }

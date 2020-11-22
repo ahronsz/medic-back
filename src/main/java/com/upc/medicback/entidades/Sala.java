@@ -16,4 +16,6 @@ public class Sala implements Serializable {
     private int piso;
     @NotNull
     private int numero;
+    @NotNull
+    private String estado;
 }

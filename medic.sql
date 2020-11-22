@@ -56,7 +56,8 @@ create table especialidad_medico (
 create table sala(
 	cod_sal varchar(10) primary key,
 	piso int not null,
-	numero int not null
+	numero int not null,
+	estado char(1) not null
 );
 
 create table cita (

@@ -18,12 +18,12 @@ public class Paciente implements Serializable {
     @NotNull
     private String apellidos;
     @NotNull
-    private char tipoDoc;
+    private String tipoDoc;
     @NotNull
     private String numDoc;
     private int ubigeo;
     private String direccion;
-    private char sexo;
+    private String sexo;
     private String foto;
     @Column
     @Temporal(TemporalType.DATE)

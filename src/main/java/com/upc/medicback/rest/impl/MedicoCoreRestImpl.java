@@ -1,6 +1,7 @@
-package com.upc.medicback.rest;
+package com.upc.medicback.rest.impl;
 
 import com.upc.medicback.entidades.Medico;
+import com.upc.medicback.rest.MedicoCoreRest;
 import com.upc.medicback.services.ServicioMedicoCore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

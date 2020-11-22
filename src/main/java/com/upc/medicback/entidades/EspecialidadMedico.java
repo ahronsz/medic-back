@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;

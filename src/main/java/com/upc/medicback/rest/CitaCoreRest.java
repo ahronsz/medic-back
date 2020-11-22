@@ -6,11 +6,10 @@ import com.upc.medicback.entidades.EspecialidadMedico;
 import java.util.List;
 
 public interface CitaCoreRest {
-    public List<Cita> listarCitaXDia(EspecialidadMedico especialidadMedico);
-
-    public List<Cita> listarCitasXDiaEspecialidad(EspecialidadMedico especialidadMedico);
-
-    public EspecialidadMedico listarHorasDisponibleXDia(EspecialidadMedico especialidadMedico);
-
-    public Cita registrarCita(Cita cita);
+    List<Cita.Detail> obtenerCitas();
+    List<Cita> listarCitaXDia(EspecialidadMedico especialidadMedico);
+    List<Cita> listarCitasXDiaEspecialidad(EspecialidadMedico especialidadMedico);
+    EspecialidadMedico listarHorasDisponibleXDia(EspecialidadMedico especialidadMedico);
+    Cita.Detail registrarCita(Cita cita);
+    Cita.Detail detalleCita(Cita cita);
 }

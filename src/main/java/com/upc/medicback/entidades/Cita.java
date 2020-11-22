@@ -2,12 +2,13 @@ package com.upc.medicback.entidades;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Entity
 @Data
@@ -20,11 +21,53 @@ public class Cita implements Serializable {
     private String cod_mir;
     @NotNull
     private String cod_sal;
-    private char estado;
+    private String estado;
     @Column
     @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-5")
     @NotNull
     private LocalDate fecha;
     @NotNull
     private String hora;
+    @Transient
+    private String cod_med;
+    @Transient
+    private String cod_esp;
+    @Transient
+    private Detail detail;
+
+    @Builder
+    @Data
+    public static class Detail {
+        private String cod_cit;
+        private String especialidad;
+        private String fecha;
+        private String hora;
+        private String estado;
+        private Medico medico;
+        private Sala sala;
+        private Paciente paciente;
+    }
+
+    @Builder
+    @Data
+    public static class Paciente {
+        private String pacienteNombres;
+        private String pacienteApellidos;
+    }
+
+    @Builder
+    @Data
+    public static class Medico {
+        private String medicoNombres;
+        private String medicoApellidos;
+        private String foto;
+    }
+
+    @Builder
+    @Data
+    public static class Sala {
+        private String numero;
+        private String piso;
+    }
+
 }

@@ -5,7 +5,7 @@ import com.upc.medicback.entidades.Medico;
 import java.util.List;
 
 public interface ServicioMedicoCore {
-    public List<Medico> listarMedicos();
-
-    public List<Medico> listarMedicosXEspecialidad(String cod_esp);
+    List<Medico> listarMedicos();
+    List<Medico> listarMedicosXEspecialidad(String cod_esp);
+    Medico obtenerMedicoXMir(String cod_mir);
 }

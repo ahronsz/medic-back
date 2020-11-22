@@ -1,5 +1,6 @@
-package com.upc.medicback.dao;
+package com.upc.medicback.dao.impl;
 
+import com.upc.medicback.dao.ServicioEspecialidadDAO;
 import com.upc.medicback.entidades.Especialidad;
 import com.upc.medicback.repositorio.RepositorioEspecialidad;
 import org.springframework.beans.factory.annotation.Autowired;

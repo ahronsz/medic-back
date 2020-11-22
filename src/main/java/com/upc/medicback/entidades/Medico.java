@@ -18,15 +18,15 @@ public class Medico implements Serializable {
     @NotNull
     private String apellidos;
     @NotNull
-    private char tipoDoc;
+    private String tipoDoc;
     @NotNull
     private String numDoc;
     @NotNull
-    private char estado;
+    private String estado;
     private int ubigeo;
     private String direccion;
     @NotNull
-    private char sexo;
+    private String sexo;
     private String foto;
     @Column
     @Temporal(TemporalType.DATE)
