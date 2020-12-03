@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -48,6 +49,26 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         this.obtenerDetalleCita(cita);
         repositorioCita.save(cita);
         return cita.getDetail();
+    }
+
+    @Override
+    public String registrarColaCita(CitaOyente citaCola) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(citaCola.getFecha(), formatter);
+
+        Cita cita = new Cita();
+        cita.setCod_pac(citaCola.getCod_pac());
+        cita.setCod_med(citaCola.getCod_med());
+        cita.setCod_esp(citaCola.getCod_esp());
+        cita.setFecha(localDate);
+        cita.setHora(citaCola.getHora());
+        this.registrarCita(cita);
+        try {
+            return "Registrado";
+        } catch (Exception e) {
+            return "Error " + e;
+        }
     }
 
     @Override

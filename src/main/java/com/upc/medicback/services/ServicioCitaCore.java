@@ -1,6 +1,7 @@
 package com.upc.medicback.services;
 
 import com.upc.medicback.entidades.Cita;
+import com.upc.medicback.entidades.CitaOyente;
 import com.upc.medicback.entidades.EspecialidadMedico;
 
 import java.util.List;
@@ -11,5 +12,6 @@ public interface ServicioCitaCore {
     List<Cita> listarCitasXDiaEspecialidad(EspecialidadMedico especialidadMedico);
     EspecialidadMedico listarHorasDisponibleXDia(EspecialidadMedico especialidadMedico);
     Cita.Detail registrarCita(Cita cita);
+    String registrarColaCita(CitaOyente cita);
     Cita.Detail obtenerDetalleCita(Cita cita);
 }
