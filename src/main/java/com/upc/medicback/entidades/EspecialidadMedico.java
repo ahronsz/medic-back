@@ -22,6 +22,7 @@ public class EspecialidadMedico implements Serializable {
 
     @Data
     public static class Hora {
+        private String fechaCompleta;
         private List<String> horas;
         private List<String> horas_m;
     }

@@ -24,7 +24,7 @@ INSERT INTO medico VALUES
 ( 'med_5', 'Julio Cesár', 'Zegarra Soto', '1', '3654821', '1', '140101', '', 'M', 'https://i.imgur.com/S1oQomJ.png', '1996-07-03'),
 ( 'med_6', 'Carolina Jimena', 'Chang Súarez', '1', '25486541', '1', '140101', '', 'F', 'https://i.imgur.com/frok9F4.png', '1996-07-03'),
 ( 'med_7', 'Alexandra Thalia', 'Barnechea García', '1', '78523645', '1', '140101', '', 'F', 'https://i.imgur.com/B9DckwT.png', '1996-07-03'),
-( 'med_8', 'Manual Walter', 'Solis Flores', '1', '76774592', '1', '140101', '', 'M', 'https://i.imgur.com/7WdLpfQ.png', '1996-07-03');
+( 'med_8', 'Manuel Walter', 'Solis Flores', '1', '76774592', '1', '140101', '', 'M', 'https://i.imgur.com/7WdLpfQ.png', '1996-07-03');
 
 INSERT INTO sala VALUES
 ( 'sal_1', '1', '1', '2'),

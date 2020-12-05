@@ -51,15 +51,16 @@ public class Cita implements Serializable {
     @Builder
     @Data
     public static class Paciente {
-        private String pacienteNombres;
-        private String pacienteApellidos;
+        private String nombres;
+        private String apellidos;
     }
 
     @Builder
     @Data
     public static class Medico {
-        private String medicoNombres;
-        private String medicoApellidos;
+        private String tipo;
+        private String nombres;
+        private String apellidos;
         private String foto;
     }
 

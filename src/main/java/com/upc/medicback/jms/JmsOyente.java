@@ -24,6 +24,7 @@ public class JmsOyente {
         ObjectMapper mapper = new ObjectMapper();
         try {
             CitaOyente cita = mapper.readValue(mensaje, CitaOyente.class);
+            System.out.println(cita);
             String msjConsola = servicioCitaCore.registrarColaCita(cita);
             System.out.println(msjConsola);
         } catch (JsonProcessingException e) {

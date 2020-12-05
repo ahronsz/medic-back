@@ -63,8 +63,9 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         cita.setCod_esp(citaCola.getCod_esp());
         cita.setFecha(localDate);
         cita.setHora(citaCola.getHora());
-        this.registrarCita(cita);
+
         try {
+            this.registrarCita(cita);
             return "Registrado";
         } catch (Exception e) {
             return "Error " + e;
@@ -121,6 +122,7 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
         if (!StringUtils.isBlank(especialidadMedico.getCod_med())) {
             this.filtrarHorasXDisponibilidad(especialidadMedico);
         }
+        especialidadMedico.getHora().setFechaCompleta(especialidadMedico.getFecha().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)));
         this.agregarMeridiano(especialidadMedico);
         return especialidadMedico;
     }
@@ -182,12 +184,13 @@ public class ServicioCitaCoreImpl implements ServicioCitaCore {
                 .hora(format_m.format(LocalTime.parse(cita.getHora())))
                 .estado(estado[Integer.parseInt(String.valueOf(cita.getEstado()))])
                 .medico(Cita.Medico.builder()
-                        .medicoNombres(medico.getNombres())
-                        .medicoApellidos(medico.getApellidos())
+                        .tipo(medico.getSexo().equals("M") ? "Dr." : "Dra.")
+                        .nombres(medico.getNombres())
+                        .apellidos(medico.getApellidos())
                         .foto(medico.getFoto()).build())
                 .paciente(Cita.Paciente.builder()
-                        .pacienteNombres(paciente.getNombres())
-                        .pacienteApellidos(paciente.getApellidos()).build())
+                        .nombres(paciente.getNombres())
+                        .apellidos(paciente.getApellidos()).build())
                 .sala(Cita.Sala.builder()
                         .numero(String.format("%s%s", abc[sala.getPiso() - 1], sala.getNumero()))
                         .piso(String.valueOf(sala.getPiso())).build())

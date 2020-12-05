@@ -57,7 +57,7 @@ public class CitaCoreRestImpl implements CitaCoreRest {
         return c;
     }
 
-    @GetMapping("/disponible")
+    @PostMapping("/disponible")
     public EspecialidadMedico listarHorasDisponibleXDia(@RequestBody EspecialidadMedico especialidadMedico) {
         EspecialidadMedico em = null;
         try {
@@ -79,7 +79,7 @@ public class CitaCoreRestImpl implements CitaCoreRest {
         return c;
     }
 
-    @GetMapping("/detalle")
+    @PostMapping("/detalle")
     public Cita.Detail detalleCita(@RequestBody Cita cita) {
         Cita.Detail c = null;
         try {
