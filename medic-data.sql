@@ -17,14 +17,14 @@ INSERT INTO especialidad (cod_esp, nombre, image) VALUES
 ( 'esp_15', 'Medicina de Emergencia', 'https://i.imgur.com/TSskSp3.png');
 
 INSERT INTO medico VALUES
-( 'med_1', 'José Luis', 'Rodríguez Tello', '1', '76771234', '1', '140101', '', 'M', 'https://i.imgur.com/pmA6xSV.png', '1996-07-03'),
-( 'med_2', 'Daniel Tulio', 'Córdova Vásquez', '1', '56781041', '1', '140101', '', 'M', 'https://i.imgur.com/suAQ73m.png', '1996-07-03'),
-( 'med_3', 'Karen Cesia', 'Zavaleta Huarcaya', '1', '34561041', '1', '140101', '', 'F', 'https://i.imgur.com/LxteMxS.png', '1996-07-03'),
-( 'med_4', 'Abhishek', 'Agarwal', '3', 'XZ2223124', '1', '140101', '', 'M', 'https://i.imgur.com/hgc9WCF.png', '1996-07-03'),
-( 'med_5', 'Julio Cesár', 'Zegarra Soto', '1', '3654821', '1', '140101', '', 'M', 'https://i.imgur.com/S1oQomJ.png', '1996-07-03'),
-( 'med_6', 'Carolina Jimena', 'Chang Súarez', '1', '25486541', '1', '140101', '', 'F', 'https://i.imgur.com/frok9F4.png', '1996-07-03'),
-( 'med_7', 'Alexandra Thalia', 'Barnechea García', '1', '78523645', '1', '140101', '', 'F', 'https://i.imgur.com/B9DckwT.png', '1996-07-03'),
-( 'med_8', 'Manuel Walter', 'Solis Flores', '1', '76774592', '1', '140101', '', 'M', 'https://i.imgur.com/7WdLpfQ.png', '1996-07-03');
+( 'med_1', 'José Luis', 'Rodríguez Tello', '1', '76771234', '1', '140101', '', 'M', 'https://i.imgur.com/pmA6xSV.png', '1965-11-13'),
+( 'med_2', 'Daniel Tulio', 'Córdova Vásquez', '1', '56781041', '1', '140101', '', 'M', 'https://i.imgur.com/suAQ73m.png', '1980-01-12'),
+( 'med_3', 'Karen Cesia', 'Zavaleta Huarcaya', '1', '34561041', '1', '140101', '', 'F', 'https://i.imgur.com/LxteMxS.png', '1990-05-25'),
+( 'med_4', 'Abhishek', 'Agarwal', '3', 'XZ2223124', '1', '140101', '', 'M', 'https://i.imgur.com/hgc9WCF.png', '1989-07-28'),
+( 'med_5', 'Julio Cesár', 'Zegarra Soto', '1', '3654821', '1', '140101', '', 'M', 'https://i.imgur.com/S1oQomJ.png', '1973-12-10'),
+( 'med_6', 'Carolina Jimena', 'Chang Súarez', '1', '25486541', '1', '140101', '', 'F', 'https://i.imgur.com/frok9F4.png', '1988-02-13'),
+( 'med_7', 'Alexandra Thalia', 'Barnechea García', '1', '78523645', '1', '140101', '', 'F', 'https://i.imgur.com/B9DckwT.png', '1990-01-22'),
+( 'med_8', 'Manuel Walter', 'Solis Flores', '1', '76774592', '1', '140101', '', 'M', 'https://i.imgur.com/7WdLpfQ.png', '1985-08-03');
 
 INSERT INTO sala VALUES
 ( 'sal_1', '1', '1', '2'),
