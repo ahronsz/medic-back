@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "9dda3532-54cd-4378-a253-2307a9aaf2d3",
+		"name": "medic-back",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MEDICO-listarXEspecialidad",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/medico/especialidad/esp_2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"medico",
+						"especialidad",
+						"esp_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MEDICO-listar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/medico/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"medico",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CITA-Listar Citas por dia, especialidad y medico",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cod_med\": \"med_1\",\r\n    \"cod_esp\": \"esp_2\",\r\n    \"fecha\": \"04/12/2020\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cita/dia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cita",
+						"dia"
+					]
+				},
+				"description": "Lista las citas por dia dependiendo de su medico y especialidad"
+			},
+			"response": []
+		},
+		{
+			"name": "CITA- Listar Citas por dia y especialidad",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cod_med\": \"\",\r\n    \"cod_esp\": \"esp_8\",\r\n    \"fecha\": \"07/12/2020\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cita/especialidad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cita",
+						"especialidad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CITA-listar horas disponible por dia, medico y especialidad",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cod_med\": \"med_1\",\r\n    \"cod_esp\": \"esp_2\",\r\n    \"fecha\": \"04/12/2020\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cita/disponible",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cita",
+						"disponible"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ESPECIALIDAD- lista todas las especialidades",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/especialidad/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"especialidad",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CITA- Registrar Cita",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cod_pac\": \"pac_1\",\r\n    \"cod_med\": \"med_1\",\r\n    \"cod_esp\": \"esp_2\",\r\n    \"fecha\": \"13/12/2020\",\r\n    \"hora\": \"18:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cita/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cita",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CITA - Confirmar cita (Paso 03)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cod_pac\": \"pac_1\",\r\n    \"cod_med\": \"med_1\",\r\n    \"cod_esp\": \"esp_2\",\r\n    \"fecha\": \"13/12/2020\",\r\n    \"hora\": \"18:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cita/detalle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cita",
+						"detalle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CITA - Listar todas las citas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cita/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cita",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CITA - registrar cita con cola (Active mq)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cod_pac\": \"pac_1\",\r\n    \"cod_med\": \"med_1\",\r\n    \"cod_esp\": \"esp_2\",\r\n    \"fecha\": \"21/12/2020\",\r\n    \"hora\": \"18:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/queue/cita",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"queue",
+						"cita"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
